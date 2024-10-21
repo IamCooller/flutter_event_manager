@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const EventListScreen(), // Основной экран с событиями.
+      home: const EventListScreen(), // Main screen of the app
     );
   }
 }

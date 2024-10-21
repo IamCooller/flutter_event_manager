@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditEventForm extends StatefulWidget {
-  final String eventId; // ID события, которое нужно редактировать.
-  final Map<String, dynamic> eventData; // Текущие данные события.
+  final String eventId; // ID event to edit.
+  final Map<String, dynamic> eventData; // Current event data.
 
   const EditEventForm(
       {super.key, required this.eventId, required this.eventData});
@@ -94,7 +94,7 @@ class _EditEventFormState extends State<EditEventForm> {
                       context,
                     ).then((_) {
                       Navigator.pop(
-                          context, true); // Возвращаем успешный результат.
+                          context, true); // Return the result as "true"
                     });
                   }
                 },
@@ -107,7 +107,7 @@ class _EditEventFormState extends State<EditEventForm> {
     );
   }
 
-  // Функция для обновления события в Firestore.
+  // Function to update the event data in Firestore.
   Future<void> updateEvent(
       String eventId,
       String title,
@@ -131,8 +131,8 @@ class _EditEventFormState extends State<EditEventForm> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Event updated successfully')),
       );
-      // Вернемся на предыдущий экран и передадим результат
-      Navigator.pop(context, true); // Возвращаем результат как "true"
+      // Return to the previous screen after updating the event.
+      Navigator.pop(context, true); // Return the result as "true"
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to update event: $error')),

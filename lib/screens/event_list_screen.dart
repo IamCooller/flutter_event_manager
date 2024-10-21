@@ -38,7 +38,7 @@ class _EventListScreenState extends State<EventListScreen> {
       ),
       body: Column(
         children: [
-          // Используем StreamBuilder для отслеживания изменений в коллекции событий
+          // Use StreamBuilder to get the list of event types
           StreamBuilder<QuerySnapshot>(
             stream: events.snapshots(),
             builder:
@@ -51,7 +51,7 @@ class _EventListScreenState extends State<EventListScreen> {
                 return const CircularProgressIndicator();
               }
 
-              // Извлекаем уникальные типы событий
+              // Get the list of event types from the snapshot
               List<String> fetchedEventTypes = snapshot.data!.docs
                   .map((doc) => doc['eventType'] as String)
                   .toSet()
@@ -61,7 +61,7 @@ class _EventListScreenState extends State<EventListScreen> {
                 fetchedEventTypes.insert(0, 'All Events');
               }
 
-              // Обновляем типы событий через Provider
+              // Update the list of event types in the provider
               filterProvider.updateEventTypes(fetchedEventTypes);
 
               return Padding(
@@ -122,7 +122,7 @@ class _EventListScreenState extends State<EventListScreen> {
                           MaterialPageRoute(
                             builder: (context) => EventDetailScreen(
                               eventId: eventDocs[index]
-                                  .id, // Передаем только ID события.
+                                  .id, // Pass the event ID to the detail screen
                             ),
                           ),
                         );

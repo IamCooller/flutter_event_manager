@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'edit_event_form.dart';
 
 class EventDetailScreen extends StatelessWidget {
-  final String eventId; // Передаем только ID события, а не все данные.
+  final String eventId; // Handle to the event to display.
 
   const EventDetailScreen({super.key, required this.eventId});
 
@@ -19,7 +19,7 @@ class EventDetailScreen extends StatelessWidget {
       body: StreamBuilder<DocumentSnapshot>(
         stream: events
             .doc(eventId)
-            .snapshots(), // Получаем поток документа события по ID.
+            .snapshots(), // Get the event data using the event ID.
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -65,7 +65,7 @@ class EventDetailScreen extends StatelessWidget {
                         builder: (context) => EditEventForm(
                           eventId: eventId,
                           eventData:
-                              eventData, // Передаем актуальные данные на форму редактирования.
+                              eventData, // Pass the event data to the edit form.
                         ),
                       ),
                     );
@@ -87,7 +87,7 @@ class EventDetailScreen extends StatelessWidget {
     );
   }
 
-  // Функция для удаления события.
+  // Function to delete an event.
   void _deleteEvent(String eventId, BuildContext context) async {
     CollectionReference events =
         FirebaseFirestore.instance.collection('events');
@@ -97,7 +97,7 @@ class EventDetailScreen extends StatelessWidget {
         const SnackBar(content: Text('Event deleted successfully')),
       );
       Navigator.pop(
-          context); // Возвращаемся на предыдущий экран после удаления.
+          context); // Return to the previous screen after deleting the event.
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to delete event: $error')),

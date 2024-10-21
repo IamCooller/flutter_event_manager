@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddEventForm extends StatefulWidget {
+  const AddEventForm({super.key});
+
   @override
   _AddEventFormState createState() => _AddEventFormState();
 }
 
 class _AddEventFormState extends State<AddEventForm> {
   final _formKey =
-      GlobalKey<FormState>(); // Ключ для идентификации формы и её валидации.
+      GlobalKey<FormState>(); // Key for the form to access its state.
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
@@ -55,7 +57,7 @@ class _AddEventFormState extends State<AddEventForm> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    // Если валидация успешна, сохраняем событие.
+                    // IF all fields are filled, call the addEvent function.
                     addEvent(
                       _titleController.text,
                       _descriptionController.text,
@@ -80,7 +82,7 @@ class _AddEventFormState extends State<AddEventForm> {
     );
   }
 
-  // Функция для добавления события в Firestore.
+  // Function to add an event to Firestore.
   Future<void> addEvent(String title, String description, String location,
       String organizer, String eventType, BuildContext context) async {
     CollectionReference events =
@@ -99,7 +101,8 @@ class _AddEventFormState extends State<AddEventForm> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Event added successfully')),
       );
-      Navigator.pop(context); // Возврат на предыдущий экран после добавления.
+      Navigator.pop(
+          context); // Return to the previous screen after adding the event.
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to add event: $error')),
