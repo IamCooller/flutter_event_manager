@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "src", // Папка с исходными файлами
+    "strict": true
+  },
+  "include": ["src"]
+}

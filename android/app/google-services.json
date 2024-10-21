@@ -1,0 +1,30 @@
+{
+	"project_info": {
+		"project_number": "14685698391",
+		"firebase_url": "https://event-management-applica-a29fb-default-rtdb.firebaseio.com",
+		"project_id": "event-management-applica-a29fb",
+		"storage_bucket": "event-management-applica-a29fb.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:14685698391:android:d234cc6ad4cea312a06612",
+				"android_client_info": {
+					"package_name": "com.example.flutter_application_1"
+				}
+			},
+			"oauth_client": [],
+			"api_key": [
+				{
+					"current_key": "AIzaSyB43hvOv3lAnQZSDn76a4HUrajV-73yoZk"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": []
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}
